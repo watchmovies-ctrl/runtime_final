@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}System Configuration{% endblock %}
+{% block content %}
+<div class="grid-2">
+    <div class="glass-card">
+        <h3>Performance Thresholds</h3>
+        <form action="{{ url_for('update_settings') }}" method="POST">
+            <div style="margin-bottom:20px;">
+                <label style="display:block; margin-bottom:10px; color:#94a3b8; font-size:13px;">Low Efficiency Alert Threshold (%)</label>
+                <input type="number" name="threshold_eff" value="{{ s.threshold_eff }}" step="0.1" required style="width:100%; padding:12px; background:rgba(0,0,0,0.2); border:1px solid #334155; color:white; border-radius:8px;">
+            </div>
+            <button type="submit" class="btn btn-glow" style="width:100%; justify-content:center;">Save Configuration</button>
+        </form>
+    </div>
+    <div class="glass-card">
+        <h3>Factory Identity</h3>
+        <form action="{{ url_for('update_settings') }}" method="POST">
+            <div style="margin-bottom:20px;">
+                <label style="display:block; margin-bottom:10px; color:#94a3b8; font-size:13px;">Plant / Unit Name</label>
+                <input type="text" name="plant_name" value="{{ s.plant_name }}" required style="width:100%; padding:12px; background:rgba(0,0,0,0.2); border:1px solid #334155; color:white; border-radius:8px;">
+            </div>
+            <div style="margin-top:20px; padding:15px; background:rgba(255,255,255,0.05); border-radius:8px;">
+                <h4 style="margin:0 0 10px 0;">System Info</h4>
+                <p style="font-size:13px; color:#94a3b8; margin:5px 0;">Version: <strong>v9.0.0 (Final)</strong></p>
+                <p style="font-size:13px; color:#94a3b8; margin:5px 0;">Status: <span style="color:#10b981">● Operational</span></p>
+            </div>
+            <!-- Hidden submit to allow form validation if user presses enter -->
+             <button type="submit" style="display:none;"></button>
+        </form>
+    </div>
+</div>
+{% endblock %}
